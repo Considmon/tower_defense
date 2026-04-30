@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from map import Map; from enemy import Enemy; m = Map\\(\\); e = Enemy\\(m.waypoint_pixels\\); print\\('OK — waypoints:', len\\(m.waypoint_pixels\\)\\)\")"
+    ]
+  }
+}
