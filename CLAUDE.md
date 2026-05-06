@@ -118,6 +118,35 @@ Suggested order:
 
 ---
 
+## Git Workflow
+
+### Branching
+- `main` is always deployable — never commit broken code directly to it
+- All non-trivial changes go on a feature branch: `feat/`, `fix/`, `chore/`
+- Branch off `main`, PR back into `main`
+
+### Before every commit
+1. Run `npm run build` — must pass with zero errors
+2. Manually verify the change works in the browser
+3. Only then stage and commit
+
+### Before every push / PR
+- **Stop and tell the user what you're about to push**
+- Wait for explicit confirmation before running `git push`
+- Never force-push to `main`
+
+### Commit messages
+- Format: `<type>: <short summary>` (e.g. `feat: add slow tower`, `fix: projectile off-by-one`)
+- Types: `feat`, `fix`, `refactor`, `chore`, `docs`
+- One logical change per commit — don't bundle unrelated fixes
+
+### Pull requests
+- Open a PR for every feature branch before merging to `main`
+- PR body should cover: what changed, why, and how to verify it
+- Merge only after the build passes and the user has reviewed
+
+---
+
 ## Workflow Orchestration
 
 ### 1. Plan Mode Default
