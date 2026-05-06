@@ -7,6 +7,7 @@ import {
   TILE_SIZE, BLACK, WHITE, UI_BG, GOLD_COL, RED, DARK_GRAY,
 } from './settings';
 
+const SCALE          = 0.75;
 const STARTING_GOLD  = 225;
 const STARTING_LIVES = 20;
 const TOWER_TYPES: (typeof Tower)[] = [BasicTower];
@@ -184,8 +185,8 @@ export default function Game() {
 
     function onMouseMove(e: MouseEvent) {
       const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      mouseX = (e.clientX - rect.left) / SCALE;
+      mouseY = (e.clientY - rect.top) / SCALE;
     }
 
     function onKeyDown(e: KeyboardEvent) {
@@ -199,8 +200,8 @@ export default function Game() {
 
     function onMouseDown(e: MouseEvent) {
       const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
+      const mx = (e.clientX - rect.left) / SCALE;
+      const my = (e.clientY - rect.top) / SCALE;
 
       if (e.button === 0) {
         if (my >= GAME_HEIGHT && phase === 'build') {
@@ -322,7 +323,7 @@ export default function Game() {
       ref={canvasRef}
       width={WIN_WIDTH}
       height={WIN_HEIGHT}
-      style={{ display: 'block', cursor: 'crosshair' }}
+      style={{ display: 'block', cursor: 'crosshair', width: WIN_WIDTH * SCALE, height: WIN_HEIGHT * SCALE }}
     />
   );
 }
